@@ -1,12 +1,14 @@
 'use client'
 import ArrowSvg from "@/Utils/arrowSvg";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ArrowHover from "../Animation/ArrowHover";
 import TextAnimation from "../Animation/TextHover";
 import Link from "next/link";
 import Image from "next/image";
+import UseMobile from "../Responsive/UseMobile";
 
 export default function Footer() {
+  const isMobile = UseMobile();
   const handleScroll = () => {
     window.scrollTo({
       top: 0,
@@ -36,7 +38,7 @@ export default function Footer() {
                 className="h-full w-full"
               >
                 <defs>
-                  <style>{`.cls-1{fill:none;stroke:${window.innerWidth <= 640 ? 'white' : 'black'};stroke-width:0.3;}`}</style>
+                  <style>{`.cls-1{fill:none;stroke:${isMobile ? 'white' : 'black'};stroke-width:0.3;}`}</style>
                 </defs>
                 <path
                   xmlns="http://www.w3.org/2000/svg"
