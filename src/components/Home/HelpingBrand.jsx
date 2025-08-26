@@ -15,7 +15,7 @@ export default function HelpingBrand() {
     SplitTextAnimation(".split-text-helping", 0.02);
   }, []);
   return (
-    <div className="h-[150vh] px-[2.8vw]  relative max-sm:flex-col max-md:flex-col max-sm:min-h-[100vh] max-md:min-h-[100vh] max-sm:justify-evenly max-md:justify-evenly max-sm:h-fit max-md:h-fit max-sm:py-[10vw] max-md:py-[10vw] flex items-center justify-center overflow-hidden w-full">
+    <section className="h-[150vh] px-[2.8vw]  relative max-sm:flex-col max-md:flex-col max-sm:min-h-[100vh] max-md:min-h-[100vh] max-sm:justify-evenly max-md:justify-evenly max-sm:h-fit max-md:h-fit max-sm:py-[10vw] max-md:py-[10vw] flex items-center justify-center overflow-hidden w-full">
       {!isTablet && <CusrorImageTrail />}
       <div className="w-full h-full flex items-center justify-center">
         <div className="w-[10%] max-sm:hidden max-md:hidden h-full flex items-center justify-center">
@@ -67,6 +67,6 @@ export default function HelpingBrand() {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 }

@@ -28,7 +28,7 @@ export default function IdeasInMotion() {
   const [active, setActive] = useState(0);
   const [activeImageHover, setActiveImageHover] = useState(0);
   return (
-    <div className="h-fit in-motion-div max-sm:min-h-[20vh] max-md:min-h-[20vh] min-h-screen px-[2.8vw] max-sm:px-[5vw] max-md:px-[5vw] max-sm:py-[15vw] max-md:py-[15vw] py-[5vw] w-full">
+    <section className="h-fit in-motion-div max-sm:min-h-[20vh] max-md:min-h-[20vh] min-h-screen px-[2.8vw] max-sm:px-[5vw] max-md:px-[5vw] max-sm:py-[15vw] max-md:py-[15vw] py-[5vw] w-full">
       <div className="flex items-center justify-between">
         <div className="flex max-sm:items-center max-md:items-center max-sm:w-full max-md:w-full max-sm:justify-start max-md:justify-start">
           <p className="text-[4vw] max-sm:text-[8vw] max-md:text-[8vw] font-medium uppercase tracking-tight">
@@ -166,6 +166,6 @@ export default function IdeasInMotion() {
           <ArrowHover text="see all insights" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

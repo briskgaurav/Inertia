@@ -11,7 +11,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="h-screen hero-div w-full max-sm:flex max-md:flex max-sm:items-center max-md:items-center max-sm:justify-center max-md:justify-center max-sm:flex-col max-md:flex-col relative max-sm:py-[10vw] max-md:py-[15vw] py-[5vw]">
+    <section className="h-screen hero-div w-full max-sm:flex max-md:flex max-sm:items-center max-md:items-center max-sm:justify-center max-md:justify-center max-sm:flex-col max-md:flex-col relative max-sm:py-[10vw] max-md:py-[15vw] py-[5vw]">
       <div className="h-[25%] max-sm:h-fit max-md:h-fit flex items-center justify-start w-full">
         <p className="text-[12vw] max-sm:text-[22vw] max-md:text-[22vw] max-sm:text-center max-md:text-center max-sm:ml-0 max-md:ml-0 max-sm:w-full max-md:w-full hero-heading ml-[6vw] tracking-tight font-medium leading-none">
           INERTIA
@@ -47,6 +47,6 @@ export default function Hero() {
           Setting Brands <span className="font-bold">in motion</span>
         </p>
       </div>}
-    </div>
+    </section>
   );
 }

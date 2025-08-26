@@ -30,6 +30,7 @@ export const WorkMarquee = () => {
         x: gsap.utils.unitize((x) => parseFloat(x) % trackWidth), 
       },
     });
+    SplitTextAnimation(".split-text", 0.02);
   }, []);
   const texts = ["CASE STUDIES", "FEATURED PROJECTS"];
 
@@ -57,7 +58,7 @@ export const WorkMarquee = () => {
 export default function About() {
   return (
     <>
-      <div className="h-[50vh] w-full pt-[3vw] flex items-start justify-between px-[2.8vw]">
+      <section className="h-[50vh] w-full pt-[3vw] flex items-start justify-between px-[2.8vw]">
         <div className="w-[35%] h-full">
           <p className="text-[2.2vw] split-text w-full tracking-tight font-medium leading-none text-left uppercase">
             WHY leading brands
@@ -77,7 +78,7 @@ export default function About() {
           </p>
           <ArrowHover />
         </div>
-      </div>
+      </section>
       <WorkMarquee />
     </>
   );

@@ -47,7 +47,7 @@ const works = [
 
 export default function Works() {
   return (
-    <div className="h-fit min-h-screen w-full">
+    <section className="h-fit min-h-screen w-full">
       <div className="h-[120vh] flex w-full">
         <div className="h-full w-[70%]">
           <div className="w-full h-1/2 bg-zinc-700">
@@ -117,6 +117,6 @@ export default function Works() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

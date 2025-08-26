@@ -56,7 +56,7 @@ export default function VideoSection() {
 
   return (
     <>
-      <div className="h-[15vh] w-full overflow-hidden relative">
+      <section className="h-[15vh] w-full overflow-hidden relative">
         <div 
           ref={marqueeRef}
           className="flex whitespace-nowrap absolute left-0 top-1/2 -translate-y-1/2"
@@ -79,9 +79,9 @@ export default function VideoSection() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="h-screen max-sm:h-[65vh] max-md:h-[65vh] w-full relative">
+      <section className="h-screen max-sm:h-[65vh] max-md:h-[65vh] w-full relative">
         <video
           src="/assets/video/second_video.mp4"
           autoPlay
@@ -89,7 +89,7 @@ export default function VideoSection() {
           loop
           className="w-full h-full object-cover"
         />
-      </div>
+      </section>
     </>
   );
 }

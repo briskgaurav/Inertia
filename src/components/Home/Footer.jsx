@@ -34,7 +34,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="h-screen overflow-x-hidden footer-container pt-[4vw] px-[2.8vw] pb-[2vw] w-full">
+    <section className="h-screen overflow-x-hidden footer-container pt-[4vw] px-[2.8vw] pb-[2vw] w-full">
       <div className="h-[40%] w-full pb-[3vw] flex flex-col justify-between">
         <p className="w-full font-medium text-[.9vw]">(CONTACT)</p>
         <div className="flex w-full items-center justify-between">
@@ -152,6 +152,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

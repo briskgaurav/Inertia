@@ -12,7 +12,7 @@ export default function FooterMobile() {
     });
   };
   return (
-    <div className="min-h-screen w-full  bg-black gap-[14vw] flex-col flex py-[10vw] px-[6vw]">
+    <section className="min-h-screen w-full  bg-black gap-[14vw] flex-col flex py-[10vw] px-[6vw]">
       <p className="text-white text-[4vw] font-medium uppercase">( CONTACT )</p>
       <p className="text-white text-[8vw] leading-none font-medium uppercase">
         ready to discuss your next project?
@@ -66,6 +66,6 @@ export default function FooterMobile() {
           <ArrowSvg />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
