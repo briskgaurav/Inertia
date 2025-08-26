@@ -1,6 +1,5 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SplitText from "gsap/dist/SplitText";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -37,7 +36,7 @@ export const setupHeroAnimation = () => {
     }, "<");
 };
 
-export const SplitTextAnimation = (selector = '.split-text', stagger = .2, duration = 1) => {
+export const SplitTextAnimation = (selector = '.split-text', stagger = .2, duration = 1, delay = 0, triggerValue = "center center", endTriggerValue = "bottom top") => {
     if (selector === undefined) return;
     const splitText = new SplitText(selector, {
         type: "lines",
@@ -49,8 +48,8 @@ export const SplitTextAnimation = (selector = '.split-text', stagger = .2, durat
     let tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
-            start: "center center",
-            end: "bottom top",
+            start: triggerValue,
+            end: endTriggerValue, 
 
         },
     });
@@ -61,7 +60,8 @@ export const SplitTextAnimation = (selector = '.split-text', stagger = .2, durat
         y: "0%",
         duration: duration,
         stagger: stagger,
-        ease: "power2.out"
+        ease: "power2.out",
+        delay: delay,
     });
 
     return tl;

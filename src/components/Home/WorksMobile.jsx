@@ -43,7 +43,7 @@ export default function WorksMobile() {
       <div className="h-fit w-full flex flex-col gap-[5vw]">
         {works.map((work, i) => (
           <div key={i} className="w-full h-fit">
-            <div className="h-[30vh] w-full">
+            <div className="h-[30vh] max-md:h-[40vh] w-full">
               <WorkVideo videoSrc={work.videoSrc} imageSrc={work.imageSrc} />
             </div>
             <WorkText
@@ -54,18 +54,18 @@ export default function WorksMobile() {
           </div>
         ))}
       </div>
-      <div className="h-fit w-full pt-[3vw] border-b border-black/60 pb-[10vw] flex flex-col items-start justify-between px-[5vw]">
+      <div className="h-fit w-full pt-[3vw] border-b border-black/20 pb-[10vw] flex flex-col items-start justify-between px-[5vw]">
         <div className="w-full h-full">
-          <p className="text-[7vw] split-text w-full tracking-tight font-medium leading-none text-left uppercase">
+          <p className="text-[7vw]  max-md:text-[6.5vw] split-text w-full tracking-tight font-medium leading-none text-left uppercase">
             WHY leading brands
           </p>
-          <p className="text-[7vw]  split-text  w-full leading-none tracking-tight font-medium text-right uppercase">
+          <p className="text-[7vw] max-md:text-[6.5vw] split-text w-full leading-none tracking-tight font-medium text-right uppercase">
             partner with inertia.
           </p>
           
         </div>
         <div className="w-full gap-[5vw] mt-[5vw] flex flex-col h-full">
-          <p className="text-[4.5vw] w-full leading-[1.2] font-medium text-left">
+          <p className="text-[4.5vw] max-md:text-[3.5vw] w-full leading-[1.2] font-medium text-left">
             From CGI product films to viral 3D billboards, we are pioneering 3D
             Imagery & Motion Design that redefines visual storytelling. See how
             we help brands make a mark.

@@ -4,12 +4,12 @@ import ArrowHover from "../Animation/ArrowHover";
 
 export const WorkText = ({ title, subTitle, number }) => {
   return (
-    <div className="p-[2vw] max-sm:p-[5vw]">
-      <p className="font-semibold leading-[1.1] max-sm:text-[5vw] text-[1.3vw] tracking-tight uppercase">
+    <div className="p-[2vw] max-md:p-[5vw] max-sm:p-[4vw]">
+      <p className="font-semibold leading-[1.1] max-sm:text-[5vw] max-md:text-[4vw] text-[1.3vw] tracking-tight uppercase">
         {title}
-        <sup className="font-normal max-sm:text-[3.5vw]  ml-[.5vw]">{number}</sup>
+        <sup className="font-normal max-sm:text-[3.5vw] max-md:text-[2.5vw]  ml-[.5vw]">{number}</sup>
       </p>
-      <p className="text-[1vw] max-sm:text-[4vw] font-normal">{subTitle}</p>
+      <p className="text-[1vw] max-sm:text-[4vw] max-md:text-[3vw] font-normal">{subTitle}</p>
     </div>
   );
 };

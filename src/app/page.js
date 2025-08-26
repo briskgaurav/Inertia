@@ -8,23 +8,22 @@ import IdeasInMotion from '@/components/Home/IdeasInMotion'
 import VideoSection from '@/components/Home/VideoSection'
 import Works from '@/components/Home/Works'
 import WorksMobile from '@/components/Home/WorksMobile'
-import Loader from '@/components/Loader/Loader'
 import NavBar from '@/components/NavBar'
-import UseMobile from '@/components/Responsive/UseMobile'
+import UseTablet from '@/components/Responsive/UseTablet'
 import React from 'react'
 
 export default function page() {
-  const isMobile = UseMobile();
+  const isTablet = UseTablet();
   return (
     <>
       <NavBar />
       <Hero />
-      {!isMobile && <About />}
-    {isMobile ?   <WorksMobile /> : <Works /> }
+      {!isTablet && <About />}
+      {isTablet ? <WorksMobile /> : <Works />}
       <HelpingBrand />
       <VideoSection />
       <IdeasInMotion />
-      {isMobile ? <FooterMobile /> : <Footer />}
+      {isTablet ? <FooterMobile /> : <Footer />}
     </>
   )
 }

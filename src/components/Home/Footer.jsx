@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import ArrowSvg from "@/Utils/arrowSvg";
 import React, { useState, useEffect } from "react";
 import ArrowHover from "../Animation/ArrowHover";
@@ -6,6 +6,8 @@ import TextAnimation from "../Animation/TextHover";
 import Link from "next/link";
 import Image from "next/image";
 import UseMobile from "../Responsive/UseMobile";
+import gsap from "gsap";
+import { SplitTextAnimation } from "../Animation/Animations";
 
 export default function Footer() {
   const isMobile = UseMobile();
@@ -15,66 +17,52 @@ export default function Footer() {
       behavior: "smooth",
     });
   };
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".footer-container",
+        start: "top 10%",
+        end: "bottom 10%",
+      },
+    });
+    SplitTextAnimation(".split-text-footer", 0.2);
+    tl.to(".footer-line", {
+      width: "100%",
+      duration: 1,
+      ease: "power2.inOut",
+    });
+  }, []);
+
   return (
-    <div className="h-screen pt-[4vw] px-[2.8vw] pb-[2vw] w-full">
-      <div className="h-[40%] w-full pb-[3vw] border-b border-black flex flex-col justify-between">
+    <div className="h-screen overflow-x-hidden footer-container pt-[4vw] px-[2.8vw] pb-[2vw] w-full">
+      <div className="h-[40%] w-full pb-[3vw] flex flex-col justify-between">
         <p className="w-full font-medium text-[.9vw]">(CONTACT)</p>
         <div className="flex w-full items-center justify-between">
           <div className="w-[75%]">
-            <p className="text-[5.2vw] font-medium leading-[1.2] uppercase">
+            <p className="text-[5.2vw] split-text-footer font-medium leading-[1.2] uppercase">
               Ready to discuss
             </p>
-            <p className="text-[5.2vw] text-right -mt-[.8vw] font-medium leading-none uppercase">
+            <p className="text-[5.2vw] split-text-footer text-right -mt-[.8vw] font-medium leading-none uppercase">
               your next project?
             </p>
           </div>
           <div className="group w-[25%] flex items-center justify-end relative h-full">
-            <div className="h-[60%] scale-100 group-hover:scale-80 transition-all duration-500 w-[60%]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                id="Calque_1"
-                data-name="Calque 1"
-                viewBox="0 0 27 28"
-                className="h-full w-full"
-              >
-                <defs>
-                  <style>{`.cls-1{fill:none;stroke:${isMobile ? 'white' : 'black'};stroke-width:0.3;}`}</style>
-                </defs>
-                <path
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="cls-1"
-                  d="M1,7V1H7"
-                  transform="translate(-0.5 -0.5)"
-                />
-                <path
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="cls-1"
-                  d="M27,22v6H21"
-                  transform="translate(-0.5 -0.5)"
-                />
-                <path
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="cls-1"
-                  d="M7,28H1V22"
-                  transform="translate(-0.5 -0.5)"
-                />
-                <path
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="cls-1"
-                  d="M21,1h6V7"
-                  transform="translate(-0.5 -0.5)"
-                />
-              </svg>
+            <div className="h-[100%]  cursor-pointer relative scale-100 group-hover:scale-90 transition-all duration-500 w-[60%]">
+              <div className="absolute top-0 left-0 w-[20px] h-[20px] border-l-2 border-t-2 border-black"></div>
+              <div className="absolute top-0 right-0 w-[20px] h-[20px] border-r-2 border-t-2 border-black"></div>
+              <div className="absolute bottom-0 left-0 w-[20px] h-[20px] border-l-2 border-b-2 border-black"></div>
+              <div className="absolute bottom-0 right-0 w-[20px] h-[20px] border-r-2 border-b-2 border-black"></div>
             </div>
-            <div className="h-[20%] text-white w-[20%] absolute inset-1/2 translate-x-[50%] translate-y-[-50%] rotate-45 group-hover:rotate-0 transition-all duration-300 flex items-center justify-center">
-              <ArrowSvg color="#ffffff" />
+            <div className="h-[20%] cursor-pointer  w-[20%] absolute inset-1/2 translate-x-[50%] translate-y-[-50%] rotate-45 group-hover:rotate-0 transition-all duration-300 flex items-center justify-center">
+              <ArrowSvg color="#000000" />
             </div>
           </div>
         </div>
       </div>
+      <div className="h-[1px] w-0 footer-line bg-black" />
       <div className="h-[45%] py-[2vw] w-full flex justify-between">
         <div className="w-1/2 h-full">
-          <ArrowHover color="#ffffff" text="work with us" />
+          <ArrowHover color="#000" text="work with us" />
         </div>
         <div className="w-1/2 h-full flex items-start justify-between">
           <div className="flex items-start gap-[6vw]">
@@ -139,7 +127,7 @@ export default function Footer() {
               src="/assets/images/logo.svg"
               alt="Inertia Studio"
               width={120}
-              className="h-full w-full" 
+              className="h-full w-full"
               height={24}
               priority
             />
@@ -148,13 +136,19 @@ export default function Footer() {
         <div className="w-1/2 h-fit flex items-end justify-between">
           <div className="flex flex-col">
             <p className="font-medium text-[.9vw]">All content ©</p>
-            <p className="font-medium text-[.9vw] -mt-[.5vw]">Inertia Studios Ltd 2025</p>
+            <p className="font-medium text-[.9vw] -mt-[.5vw]">
+              Inertia Studios Ltd 2025
+            </p>
           </div>
           <div className="h-full flex items-end">
             <p className="font-medium text-[.9vw]">Website by Okey Studio</p>
           </div>
           <div onClick={handleScroll} className="h-full flex items-end">
-            <TextAnimation text="BACK TO TOP ↑" size="text-[.9vw]" font="font-medium" />
+            <TextAnimation
+              text="BACK TO TOP ↑"
+              size="text-[.9vw]"
+              font="font-medium"
+            />
           </div>
         </div>
       </div>

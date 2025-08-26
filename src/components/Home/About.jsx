@@ -7,60 +7,47 @@ import { SplitTextAnimation } from "../Animation/Animations";
 
 export const WorkMarquee = () => {
   const marqueeRef = useRef(null);
-  const marqueeContentRef = useRef(null);
+  const marqueeTrackRef = useRef(null);
 
   useEffect(() => {
-    SplitTextAnimation();
+    const marquee = marqueeRef.current;
+    const track = marqueeTrackRef.current;
 
-    const marqueeContent = marqueeContentRef.current;
-    const marqueeWidth = marqueeContent.offsetWidth;
+    if (!marquee || !track) return;
 
-    const clone1 = marqueeContent.cloneNode(true);
-    const clone2 = marqueeContent.cloneNode(true);
-    marqueeRef.current.appendChild(clone1);
-    marqueeRef.current.appendChild(clone2);
+    const trackWidth = track.scrollWidth;
 
-    const tl = gsap.timeline({
+    const clone = track.cloneNode(true);
+    marquee.appendChild(clone);
+
+    // Animate continuously
+    gsap.to(marquee.children, {
+      x: `-${trackWidth}px`,
+      duration: 10, 
+      ease: "linear",
       repeat: -1,
-      defaults: {
-        ease: "linear",
+      modifiers: {
+        x: gsap.utils.unitize((x) => parseFloat(x) % trackWidth), 
       },
     });
-
-    tl.to(marqueeRef.current, {
-      x: -marqueeWidth,
-      duration: 15,
-      onComplete: () => {
-        gsap.set(marqueeRef.current, { x: 0 });
-      },
-    });
-
-    return () => {
-      tl.kill();
-    };
   }, []);
+  const texts = ["CASE STUDIES", "FEATURED PROJECTS"];
+
   return (
-    <div className="w-[100%] border-t border-black/60 h-full flex flex-col justify-between">
-      <div className="overflow-hidden w-full">
-        <div ref={marqueeRef} className="flex gap-[5vw]">
-          <div
-            ref={marqueeContentRef}
-            className="flex gap-[5vw] whitespace-nowrap"
-          >
-            {[
-              "CASE STUDIES",
-              "FEATURED PROJECTS",
-              "CASE STUDIES",
-              "FEATURED PROJECTS",
-            ].map((text, i) => (
-              <p
-                key={i}
-                className="text-[5vw] max-sm:text-[10vw] tracking-tight font-medium uppercase"
-              >
-                {text}
-              </p>
-            ))}
-          </div>
+    <div className="w-full border-t border-black/60 h-full flex flex-col justify-between overflow-hidden">
+      <div
+        ref={marqueeRef}
+        className="relative flex w-full overflow-hidden whitespace-nowrap"
+      >
+        <div ref={marqueeTrackRef} className="flex  pr-[5vw] gap-[5vw]">
+          {texts.map((text, i) => (
+            <p
+              key={i}
+              className="text-[5vw] max-md:text-[12vw] max-sm:text-[10vw] tracking-tight font-medium uppercase"
+            >
+              {text}
+            </p>
+          ))}
         </div>
       </div>
     </div>
@@ -68,8 +55,6 @@ export const WorkMarquee = () => {
 };
 
 export default function About() {
- 
-
   return (
     <>
       <div className="h-[50vh] w-full pt-[3vw] flex items-start justify-between px-[2.8vw]">

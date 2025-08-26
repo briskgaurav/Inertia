@@ -7,12 +7,13 @@ export default function TextAnimation({
   size = "text-[2vw]",
   font = "font-normal",
   blend = false,
+  className = ""
 }) {
   return (
     <Link
       scroll={false}
       href="#"
-      className="relative inline-block h-fit group cursor-pointer"
+      className={`relative  inline-block h-fit group cursor-pointer ${className}`}
     >
       <div className="relative flex flex-col items-end">
         <span

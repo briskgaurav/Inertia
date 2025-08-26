@@ -8,30 +8,37 @@ import ArrowSvg from "@/Utils/arrowSvg";
 import gsap from "gsap";
 import UseMobile from "./Responsive/UseMobile";
 import { SplitTextAnimation } from "./Animation/Animations";
+import UseTablet from "./Responsive/UseTablet";
 
 export default function NavBar() {
-  const isMobile = UseMobile();
+  const isTablet = UseTablet();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (isMobile) {
-      if (isOpen) {
-        gsap.to(".hamburger-menu", {
-          xPercent: 0,
-          duration: 0.8,
-          ease: "power4.inOut",
-        });
-        SplitTextAnimation(".menu-text", 0.015);
-      } else {
-        gsap.to(".hamburger-menu", {
-          xPercent: 100,
-          duration: 0.8,
-          ease: "power4.inOut",
-        });
-      }
+    if (!isTablet) return;
+  
+    if (isOpen) {
+      gsap.to(".hamburger-menu", {
+        xPercent: 0,
+        duration: 0.8,
+        ease: "power4.inOut"
+      });
+      SplitTextAnimation(".menu-text", 0.015);
+    } else {
+      gsap.to(".hamburger-menu", {
+        xPercent: 100,
+        duration: 0.8,
+        ease: "power4.inOut"
+      });
     }
-  }, [isOpen, isMobile]);
-
+  }, [isOpen, isTablet]);
+  
+  useEffect(() => {
+    if (isTablet) {
+      gsap.set(".hamburger-menu", { xPercent: 100 });
+    }
+  }, [isTablet]);
+  
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
@@ -39,13 +46,13 @@ export default function NavBar() {
   return (
     <>
       <div className="w-full relative">
-        <nav className="fixed z-[500] mix-blend-difference inset-x-0 top-0 left-0 w-full px-[2.8vw] max-sm:px-[6vw] max-sm:pt-[8vw] pt-[2vw] flex items-center justify-between pointer-events-none">
-          <div className="flex h-auto max-sm:w-[25vw] text-white w-[12vw] items-center pointer-events-auto">
+        <nav className="fixed z-[500] mix-blend-difference inset-x-0 top-0 left-0 w-full px-[2.8vw] max-sm:px-[6vw] max-md:px-[4vw] max-md:pt-[8vw] max-sm:pt-[8vw] pt-[2vw] flex items-center justify-between pointer-events-none">
+          <div className="flex relative z-[800] h-auto max-sm:w-[30vw] max-md:w-[25vw] text-white w-[12vw] items-center pointer-events-auto">
             <Logosvg />
           </div>
 
           {/* Desktop Menu */}
-          <div className="flex h-full max-sm:hidden items-end justify-between w-[35%] pointer-events-auto">
+          <div className="flex h-full max-sm:hidden max-md:hidden items-end justify-between w-[35%] pointer-events-auto">
             <div className="flex items-end gap-[1.2vw] text-[.9vw] font-semibold tracking-tight uppercase">
               {["Home", "About", "Capabilities", "Projects"].map((item) => (
                 <TextAnimation
@@ -75,7 +82,7 @@ export default function NavBar() {
         </nav>
         <div
           onClick={toggleMenu}
-          className="w-[6vw] mix-blend-difference  fixed top-[8vw] right-[6vw] lg:hidden pointer-events-auto flex flex-col h-[5vw] gap-[1.5vw] !z-[999] justify-center items-center  cursor-pointer"
+          className="w-[6vw] mix-blend-difference  fixed top-[8vw] right-[6vw] lg:hidden pointer-events-auto flex flex-col h-[5vw] gap-[1.5vw] !z-[800] justify-center items-center  cursor-pointer"
         >
           <span
             className={`block w-full h-[.4vw] bg-white transform transition-all duration-500 ${
@@ -130,12 +137,12 @@ export default function NavBar() {
           </div>
         </div>
 
-        {isMobile && (
-          <div className="hamburger-menu w-screen flex-col h-screen bg-[#E7E7E7] flex items-center justify-center px-[5vw] fixed z-[500] top-0 left-0">
+        {isTablet && (
+          <div className="hamburger-menu w-screen flex-col h-screen bg-[#E7E7E7] flex items-center justify-center  px-[5vw] fixed z-[500] top-0 left-0">
             {["WORK", "ABOUT", "CAPABILITIES", "INSIGHTS", "CONTACT"].map(
               (item) => (
                 <div key={item} className="w-full mb-[5vw]">
-                  <p className="text-[10vw] font-medium menu-text uppercase">
+                  <p className="text-[10vw] font-medium max-md:text-[5vw] menu-text uppercase">
                     {item}
                   </p>
                   <div className="h-[1px] w-full bg-black" />
