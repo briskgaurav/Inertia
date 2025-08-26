@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <>
         <LenisSmoothScroll />
-        {/* <Loader /> */}
+        <Loader />
       </>
       <body
         className={`${PPNeueMontreal.variable} antialiased`}
